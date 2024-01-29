@@ -5,8 +5,8 @@ module GoogleWallet
     module EventTicket
       class Class < Base
         attr_reader :class_identifier, :issuer_name, :logo_url, :event_id, :event_name,
-                    :venue_name, :venue_address, :start_date_time, :end_date_time, :country_code,
-                    :hex_background_color, :hero_image_url, :homepage_url, :callback_url, :id
+                    :venue_name, :venue_address, :start_date_time, :end_date_time, :doors_open_date_time, 
+                    :country_code, :hex_background_color, :hero_image_url, :homepage_url, :callback_url, :id
 
 
         # attributes = {
@@ -22,6 +22,7 @@ module GoogleWallet
         #   venue_address: "Shevchenka street 41/5, Ukraine, Lviv",
         #   start_date_time: '2023-08-27T22:30',
         #   end_date_time: '2023-08-28T01:30',
+        #   doors_open_date_time: '2023-08-27T20:00',
         #   hex_background_color: '#ff0077',
         #   callback_url: 'https://example.com/gpass_callback'
         # }
@@ -76,6 +77,7 @@ module GoogleWallet
           template[:dateTime] = {}
           template[:dateTime][:start] = start_date_time if present?(start_date_time)
           template[:dateTime][:end] = end_date_time if present?(end_date_time)
+          template[:dateTime][:doorsOpen] = doors_open_date_time if present?(doors_open_date_time)
 
           template
         end
